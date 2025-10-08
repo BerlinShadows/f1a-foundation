@@ -5,11 +5,35 @@ import Marquee from '@/components/presentation/Marquee';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
+import Chart from '@/components/ui/Chart';
 import Input from '@/components/ui/Input';
+import Modal from '@/components/ui/Modal';
+import Skeleton from '@/components/ui/Skeleton';
 import StatCard from '@/components/ui/StatCard';
+import Table from '@/components/ui/Table';
+import Tabs from '@/components/ui/Tabs';
 import { CpuChipIcon, DocumentTextIcon, UserCircleIcon } from '@heroicons/react/24/outline';
+import { useEffect, useState } from 'react';
 
 export default function HomePage() {
+    const [isModalOpen, setIsModalOpen] = useState(false);
+    const [mockRows, setMockRows] = useState<(string | number | React.ReactNode)[][]>([]);
+
+    useEffect(() => {
+        const generateMockRows = () => {
+            return Array.from({ length: 25 }, (_, i) => [
+                `0x${Math.random().toString(16).slice(2, 10)}...${Math.random().toString(16).slice(2, 6)}`,
+                `${(Math.random() * 10).toFixed(2)} ETH`,
+                i % 3 === 0 ? <Badge variant="success">Confirmed</Badge> :
+                    i % 3 === 1 ? <Badge variant="warning">Pending</Badge> :
+                        <Badge variant="danger">Failed</Badge>,
+                `${Math.floor(Math.random() * 60)} min ago`,
+            ]);
+        };
+
+        setMockRows(generateMockRows());
+    }, []);
+
     return (
         <>
             <GradientBackground />
@@ -164,7 +188,73 @@ export default function HomePage() {
                         />
                     </div>
                 </section>
+
+                <section style={{ marginBottom: '3rem' }}>
+                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Data Table</h3>
+                    <Table
+                        headers={['Transaction', 'Amount', 'Status', 'Time']}
+                        rows={mockRows}
+                        sortable={true}
+                        filterable={true}
+                    />
+                </section>
+
+                <section>
+                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Analytics Chart</h3>
+                    <div style={{ background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '16px', border: '1px solid var(--border)' }}>
+                        <Chart title="Total Value Locked (TVL)" height={320} />
+                    </div>
+                </section>
+
+                <section style={{ marginBottom: '3rem' }}>
+                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Modal</h3>
+                    <Button onClick={() => setIsModalOpen(true)}>Open Modal</Button>
+                    <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)} title="Transaction Details">
+                        <p style={{ color: 'var(--text-secondary)', marginBottom: '1rem' }}>
+                            You are about to send 1.5 ETH to 0x8a3...f2c.
+                        </p>
+                        <div style={{ display: 'flex', gap: '1rem', marginTop: '1.5rem' }}>
+                            <Button variant="outline" onClick={() => setIsModalOpen(false)}>Cancel</Button>
+                            <Button>Confirm</Button>
+                        </div>
+                    </Modal>
+                </section>
+
+                <section style={{ marginBottom: '3rem' }}>
+                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Tabs</h3>
+                    <Tabs
+                        tabs={[
+                            {
+                                id: 'overview',
+                                label: 'Overview',
+                                content: <p style={{ color: 'var(--text-secondary)' }}>Total assets, activity summary.</p>,
+                            },
+                            {
+                                id: 'history',
+                                label: 'History',
+                                content: <Table headers={['Action', 'Date']} rows={[['Deposit', 'Today'], ['Withdraw', 'Yesterday']]} pageSize={5} />,
+                            },
+                            {
+                                id: 'settings',
+                                label: 'Settings',
+                                content: <Input label="Wallet Name" placeholder="My Wallet" />,
+                            },
+                        ]}
+                    />
+                </section>
+
+                <section>
+                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Skeleton Loading</h3>
+                    <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border)' }}>
+                        <Skeleton circle width="40px" height="40px" />
+                        <div style={{ flex: 1 }}>
+                            <Skeleton width="60%" height="1.2rem" />
+                            <Skeleton width="40%" height="1rem" style={{ marginTop: '0.5rem' }} />
+                        </div>
+                    </div>
+                </section>
             </div>
+
         </>
     );
 }
