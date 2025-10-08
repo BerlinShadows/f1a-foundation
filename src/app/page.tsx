@@ -158,8 +158,8 @@ export default function HomePage() {
                     </div>
                 </section>
 
-                <section>
-                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Stat Cards</h3>
+                <section style={{ marginBottom: '3rem' }}>
+                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>Stat Cards</h3>
                     <div
                         style={{
                             display: 'grid',
@@ -199,7 +199,7 @@ export default function HomePage() {
                     />
                 </section>
 
-                <section>
+                <section style={{ marginBottom: '3rem' }}>
                     <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Analytics Chart</h3>
                     <div style={{ background: 'var(--card-bg)', padding: '1.5rem', borderRadius: '16px', border: '1px solid var(--border)' }}>
                         <Chart title="Total Value Locked (TVL)" height={320} />
@@ -244,7 +244,7 @@ export default function HomePage() {
                 </section>
 
                 <section>
-                    <h3 style={{ marginBottom: '1rem', color: 'var(--text-primary)' }}>Skeleton Loading</h3>
+                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>Skeleton Loading</h3>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border)' }}>
                         <Skeleton circle width="40px" height="40px" />
                         <div style={{ flex: 1 }}>
