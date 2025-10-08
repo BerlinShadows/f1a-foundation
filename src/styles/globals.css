@@ -55,6 +55,8 @@ ul {
     --card-bg: #16161d;
     --text-primary: #e6e6ff;
     --text-secondary: #a0a0c0;
+    --chart-area: rgba(99, 102, 241, 0.15);
+    --chart-grid: rgba(255, 255, 255, 0.05);
     --accent: #6366f1;
     --accent-hover: #818cf8;
     --border: #2d2d3a;
@@ -70,6 +72,7 @@ ul {
     --header-bg: rgba(15, 15, 18, 0.5);
     --header-border: rgba(45, 45, 58, 0.3);
     --card-bg: rgba(22, 22, 29, 0.5);
+    --marquee: rgba(230, 230, 255, 0.6);
 }
 
 [data-theme='light'] {
@@ -78,6 +81,8 @@ ul {
     --card-bg: #ffffff;
     --text-primary: #1e293b;
     --text-secondary: #64748b;
+    --chart-area: rgba(79, 70, 229, 0.1);
+    --chart-grid: rgba(0, 0, 0, 0.08);
     --accent: #4f46e5;
     --accent-hover: #6366f1;
     --border: #e2e8f0;
@@ -95,6 +100,7 @@ ul {
         0 1px 2px rgba(255, 255, 255, 0.3),
         0 0 4px rgba(255, 255, 255, 0.2);
     --card-bg: rgba(255, 255, 255, 0.7);
+    --marquee: rgba(182, 30, 106, 0.6);
 }
 
 .card {

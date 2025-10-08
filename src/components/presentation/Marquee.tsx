@@ -1,6 +1,5 @@
 'use client';
 
-import { useTheme } from '@/hooks/useTheme';
 import { useLayoutEffect, useState } from 'react';
 
 const BRANDS = [
@@ -9,10 +8,7 @@ const BRANDS = [
 ];
 
 export default function Marquee() {
-  const { theme } = useTheme();
-  const isDark = theme === 'dark';
   const [isMobile, setIsMobile] = useState(false);
-
   useLayoutEffect(() => {
     const checkMobile = () => setIsMobile(window.innerWidth < 768);
     checkMobile();
@@ -37,7 +33,7 @@ export default function Marquee() {
           animation: `marquee ${isMobile ? '35s' : '25s'} linear infinite`,
           fontSize: isMobile ? '0.95rem' : '1.1rem',
           fontWeight: 500,
-          color: isDark ? 'rgba(230, 230, 255, 0.6)' : 'rgba(182, 30, 106, 0.6)',
+          color: 'var(--marquee)',
         }}
       >
         {Array(4)
