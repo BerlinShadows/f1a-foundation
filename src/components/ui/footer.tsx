@@ -32,7 +32,7 @@ export default function Footer() {
                     <span>Web3 Frontend Template</span>
                     <span>•</span>
                     <a
-                        href="https://github.com/"
+                        href="https://github.com/BerlinShadows/"
                         target="_blank"
                         rel="noopener noreferrer"
                         style={{
