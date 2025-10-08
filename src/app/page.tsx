@@ -41,7 +41,7 @@ export default function HomePage() {
             <div
                 style={{
                     textAlign: 'center',
-                    padding: '4rem 1.5rem 2rem',
+                    padding: '3rem 1.5rem 2rem',
                     maxWidth: '800px',
                     margin: '0 auto',
                     position: 'relative',
@@ -52,27 +52,26 @@ export default function HomePage() {
                     style={{
                         fontSize: '2.8rem',
                         fontWeight: 700,
-                        marginBottom: '1rem',
-                        background: 'linear-gradient(135deg, var(--accent), #8b5cf6)',
+                        marginBottom: '1.2rem',
+                        background: 'linear-gradient(135deg, var(--accent), var(--gradient-end))',
                         WebkitBackgroundClip: 'text',
                         WebkitTextFillColor: 'transparent',
                         backgroundClip: 'text',
                         lineHeight: 1.2,
                     }}
                 >
-                    Web3 Frontend Template
+                    Reimagine Ownership
                 </h1>
 
                 <p
                     style={{
-                        fontSize: '1.1rem',
+                        fontSize: '1.15rem',
                         color: 'var(--text-secondary)',
-                        lineHeight: 1.6,
+                        lineHeight: 1.7,
                         marginTop: '1.2rem',
                     }}
                 >
-                    A minimal, themeable, and reusable starter for modern Web3 applications.
-                    Built with Next.js, TypeScript, and a focus on developer experience.
+                    A new paradigm for digital identity, assets, and collaboration — built on transparency, user sovereignty, and open protocols.
                 </p>
             </div>
             <div

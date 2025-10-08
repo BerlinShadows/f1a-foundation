@@ -1,12 +1,13 @@
-import type { Metadata } from "next";
+'use client';
+
 import "./../styles/globals.css";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-
-export const metadata: Metadata = {
-    title: "Web3 Template",
-    description: "Minimal Web3 frontend starter",
-};
+import { WagmiProvider } from "wagmi";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+import { config } from "@/lib/wagmi";
+import '@rainbow-me/rainbowkit/styles.css';
 
 export default function RootLayout({
     children,
@@ -20,19 +21,25 @@ export default function RootLayout({
                     minHeight: '100vh',
                 }}
             >
-                <Header />
-                <main
-                    style={{
-                        flex: 1,
-                        padding: "2rem 1.5rem",
-                        maxWidth: "1200px",
-                        margin: "0 auto",
-                        width: "100%",
-                    }}
-                >
-                    {children}
-                </main>
-                <Footer />
+                <WagmiProvider config={config}>
+                    <QueryClientProvider client={new QueryClient()}>
+                        <RainbowKitProvider>
+                            <Header />
+                            <main
+                                style={{
+                                    flex: 1,
+                                    padding: "2rem 1.5rem",
+                                    maxWidth: "1200px",
+                                    margin: "0 auto",
+                                    width: "100%",
+                                }}
+                            >
+                                {children}
+                            </main>
+                            <Footer />
+                        </RainbowKitProvider>
+                    </QueryClientProvider>
+                </WagmiProvider>
             </body>
         </html>
     );

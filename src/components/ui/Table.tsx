@@ -212,7 +212,7 @@ export default function Table({
                         >
                             {row.map((cell, j) => (
                                 <td
-                                    key={j}
+                                    key={`cell-${i}-${j}`}
                                     style={{
                                         padding: '1rem 1.25rem',
                                         color: 'var(--text-primary)',
