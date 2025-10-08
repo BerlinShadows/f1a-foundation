@@ -19,7 +19,6 @@ export default function Table({
     sortable = false,
     filterable = false,
     filterColumnIndex = 2,
-    className = '',
     style,
 }: TableProps) {
     const [currentPage, setCurrentPage] = useState(1);

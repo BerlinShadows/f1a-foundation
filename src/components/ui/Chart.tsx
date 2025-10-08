@@ -70,7 +70,7 @@ export default function Chart({ title, height = 300 }: ChartProps) {
                 fontSize: '1.1rem'
             }}>{title}</h3>}
             <div style={{ height: '100%' }}>
-                <Line data={data} options={options as any} />
+                <Line data={data} options={options} />
             </div>
         </div>
     );
