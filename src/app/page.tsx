@@ -276,13 +276,12 @@ export default function HomePage() {
                 </section>
 
                 <section style={{ marginBottom: '3rem' }}>
-                    <h2 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center', color: 'var(--text-primary)' }}>
+                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>
                         Vision Gallery
-                    </h2>
+                    </h3>
                     <ImageCarousel items={carouselItems} autoPlay interval={6000} />
                 </section>
             </div>
-
         </>
     );
 }

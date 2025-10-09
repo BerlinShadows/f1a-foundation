@@ -43,7 +43,7 @@ export default function ImageCarousel({
 
     return (
         <div style={{ width: '100%', maxWidth: '900px', margin: '0 auto' }}>
-            {/* Карточка */}
+
             <div style={{ position: 'relative', overflow: 'hidden', borderRadius: '16px' }}>
                 <div
                     style={{
