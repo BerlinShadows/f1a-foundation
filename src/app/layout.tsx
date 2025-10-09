@@ -1,8 +1,5 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
 import ClientLayout from './client-layout';
-
-const inter = Inter({ subsets: ["latin"] });
 
 export const metadata: Metadata = {
     title: {
@@ -42,7 +39,7 @@ export default function RootLayout({
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <meta name="theme-color" content="#6366f1" />
             </head>
-            <body className={inter.className}>
+            <body>
                 <ClientLayout>{children}</ClientLayout>
             </body>
         </html>

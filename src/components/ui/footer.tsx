@@ -1,7 +1,8 @@
 'use client';
 
 import Link from 'next/link';
-import { ArrowTopRightOnSquareIcon } from '@heroicons/react/24/outline';
+import { ArrowTopRightOnSquareIcon, EnvelopeIcon } from '@heroicons/react/24/outline';
+import { SiTelegram, SiVk } from 'react-icons/si';
 
 const Footer = () => {
     return (
@@ -122,10 +123,10 @@ const Footer = () => {
                                     {item.name}
                                     <ArrowTopRightOnSquareIcon style={{ width: '14px', height: '14px' }} />
                                 </a>
-                            </li>
+                            </li >
                         ))}
-                    </ul>
-                </div>
+                    </ul >
+                </div >
 
                 <div>
                     <h4
@@ -143,10 +144,11 @@ const Footer = () => {
                     </p>
                     <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
                         {[
-                            { key: 'VK', href: 'https://vk.com/mrazotavk' },
-                            { key: 'VK', href: 'https://vk.com/mi.tut.prosta2' },
-                            { key: 'VK', href: 'https://vk.com/fujifu' },
-                            { key: 'TG', href: 'https://t.me/mi_landau' },
+                            { key: 'ANNA', href: 'https://vk.com/mrazotavk', icon: <SiVk /> },
+                            { key: 'MI_', href: 'https://vk.com/mi.tut.prosta2', icon: <SiVk /> },
+                            { key: 'KOT', href: 'https://vk.com/fujifu', icon: <SiVk /> },
+                            { key: 'TG', href: 'https://t.me/mi_landau', icon: <SiTelegram /> },
+                            { key: 'email', href: 'mailto:mi_landau@outlook.com', icon: <EnvelopeIcon width={20} height={20} /> }
                         ].map((social) => (
                             <a
                                 key={social.key}
@@ -174,12 +176,12 @@ const Footer = () => {
                                     e.currentTarget.style.color = 'var(--text-secondary)';
                                 }}
                             >
-                                {social.key}
+                                {social.icon}
                             </a>
                         ))}
                     </div>
                 </div>
-            </div>
+            </div >
 
             <div
                 style={{
@@ -195,7 +197,7 @@ const Footer = () => {
             >
                 © {new Date().getFullYear()} Protocol Labs. All rights reserved.
             </div>
-        </footer>
+        </footer >
     );
 };
 

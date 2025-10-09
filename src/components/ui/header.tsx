@@ -187,17 +187,6 @@ export default function Header() {
                   );
                 }}
               </ConnectButton.Custom>
-              <span
-                style={{
-                  position: 'absolute',
-                  bottom: '-2px',
-                  left: 0,
-                  width: '100%',
-                  height: '2px',
-                  backgroundColor: 'var(--accent)',
-                  borderRadius: '2px',
-                }}
-              />
             </li>
           </ul>
         </nav>

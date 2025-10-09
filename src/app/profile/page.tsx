@@ -5,7 +5,7 @@ import { useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Chart from '@/components/ui/Chart';
 import Table from '@/components/ui/Table';
-import Badge from '@/components/ui/Badge';
+// import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
 
 export default function ProfilePage() {

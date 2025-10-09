@@ -1,6 +1,7 @@
 'use client';
 
 import GradientBackground from '@/components/presentation/GradientBackground';
+import ImageCarousel from '@/components/presentation/ImageCarousel';
 import Marquee from '@/components/presentation/Marquee';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
@@ -14,6 +15,27 @@ import Table from '@/components/ui/Table';
 import Tabs from '@/components/ui/Tabs';
 import { CpuChipIcon, DocumentTextIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
+
+const carouselItems = [
+    {
+        src: '',
+        alt: 'Concept 1',
+        title: 'Decentralized Identity',
+        description: 'Own and control your digital identity across platforms without intermediaries.',
+    },
+    {
+        src: '',
+        alt: 'Concept 2',
+        title: 'Composable Assets',
+        description: 'Assets that can be used across multiple protocols and applications seamlessly.',
+    },
+    {
+        src: '',
+        alt: 'Concept 3',
+        title: 'Transparent Governance',
+        description: 'Participate in protocol decisions with full visibility and verifiable voting.',
+    },
+];
 
 export default function HomePage() {
     const [isModalOpen, setIsModalOpen] = useState(false);
@@ -251,6 +273,13 @@ export default function HomePage() {
                             <Skeleton width="40%" height="1rem" style={{ marginTop: '0.5rem' }} />
                         </div>
                     </div>
+                </section>
+
+                <section style={{ marginBottom: '3rem' }}>
+                    <h2 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center', color: 'var(--text-primary)' }}>
+                        Vision Gallery
+                    </h2>
+                    <ImageCarousel items={carouselItems} autoPlay interval={6000} />
                 </section>
             </div>
 

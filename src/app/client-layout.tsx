@@ -20,13 +20,7 @@ export default function RootLayout({
                 <meta name="msapplication-TileColor" content="#6366f1" />
                 <meta name="msapplication-config" content="/browserconfig.xml" />
             </head>
-            <body
-                style={{
-                    display: 'flex',
-                    flexDirection: 'column',
-                    minHeight: '100vh',
-                }}
-            >
+            <body>
                 <WagmiProvider config={config}>
                     <QueryClientProvider client={new QueryClient()}>
                         <RainbowKitProvider>
