@@ -184,7 +184,7 @@ export default function ProfilePage() {
                 <p style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{formData.bio}</p>
               </div>
               <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
-                <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>
+                <Button variant={'secondary'} onClick={() => setIsEditing(true)}>Edit Profile</Button>
               </div>
             </div>
           )}
