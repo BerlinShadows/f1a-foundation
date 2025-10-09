@@ -15,22 +15,30 @@ import Table from '@/components/ui/Table';
 import Tabs from '@/components/ui/Tabs';
 import { CpuChipIcon, DocumentTextIcon, UserCircleIcon } from '@heroicons/react/24/outline';
 import { useEffect, useState } from 'react';
+import image1 from '@/assets/1.jpg';
+import image2 from '@/assets/3.jpg';
 
 const carouselItems = [
     {
-        src: '',
+        src: image1.src,
         alt: 'Concept 1',
         title: 'Decentralized Identity',
         description: 'Own and control your digital identity across platforms without intermediaries.',
     },
     {
-        src: '',
+        src: image2.src,
         alt: 'Concept 2',
         title: 'Composable Assets',
         description: 'Assets that can be used across multiple protocols and applications seamlessly.',
     },
     {
-        src: '',
+        src: image2.src,
+        alt: 'Concept 3',
+        title: 'Transparent Governance',
+        description: 'Participate in protocol decisions with full visibility and verifiable voting.',
+    },
+    {
+        src: image1.src,
         alt: 'Concept 3',
         title: 'Transparent Governance',
         description: 'Participate in protocol decisions with full visibility and verifiable voting.',
@@ -57,7 +65,7 @@ export default function HomePage() {
     }, []);
 
     return (
-        <>
+        <div style={{ margin: '0 auto' }}>
             <GradientBackground />
 
             <div
@@ -138,7 +146,7 @@ export default function HomePage() {
 
             <Marquee />
 
-            <div style={{ padding: '3rem 1.5rem', maxWidth: '1200px', margin: '0 auto', position: 'relative', zIndex: 2 }}>
+            <div style={{ padding: '3rem 1.5rem', margin: '0 auto', position: 'relative', zIndex: 2 }}>
                 <h2 style={{ fontSize: '2rem', marginBottom: '2rem', textAlign: 'center', color: 'var(--text-primary)' }}>
                     UI Components Preview
                 </h2>
@@ -264,7 +272,7 @@ export default function HomePage() {
                     />
                 </section>
 
-                <section>
+                <section style={{ marginBottom: '3rem' }} >
                     <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>Skeleton Loading</h3>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border)' }}>
                         <Skeleton circle width="40px" height="40px" />
@@ -282,6 +290,6 @@ export default function HomePage() {
                     <ImageCarousel items={carouselItems} autoPlay interval={6000} />
                 </section>
             </div>
-        </>
+        </div>
     );
 }

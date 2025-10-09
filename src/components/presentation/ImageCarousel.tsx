@@ -54,7 +54,13 @@ export default function ImageCarousel({
                     }}
                 >
                     {items.map((item, i) => (
-                        <div key={i} style={{ flex: '0 0 100%', padding: '0 8px' }}>
+                        <div key={i} style={{
+                            flex: '0 0 100%',
+                            padding: '0 8px',
+                            boxSizing: 'border-box',
+                            width: '100%',
+                            overflow: 'hidden',
+                        }}>
                             <ImageCard {...item} />
                         </div>
                     ))}
@@ -122,6 +128,6 @@ export default function ImageCarousel({
                     />
                 ))}
             </div>
-        </div>
+        </div >
     );
 }

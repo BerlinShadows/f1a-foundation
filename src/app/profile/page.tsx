@@ -35,7 +35,7 @@ export default function ProfilePage() {
   };
 
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ margin: '0 auto' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)' }}>
         {isConnected ? 'My Profile' : 'Connect Your Wallet'}
       </h1>

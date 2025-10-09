@@ -36,7 +36,7 @@ const referenceItems = [
 
 export default function ReferencePage() {
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
+    <div style={{ margin: '0 auto' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)' }}>Reference</h1>
 
       <div
@@ -48,7 +48,7 @@ export default function ReferencePage() {
       >
         {referenceItems.map((item, i) => (
           <Card key={i} title={item.title}>
-            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1rem' }}>
+            <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, marginBottom: '1rem', }}>
               {item.description}
             </p>
             <Link

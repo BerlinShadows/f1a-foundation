@@ -17,6 +17,8 @@ const Footer = () => {
                 boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.08)',
                 width: '100%',
                 minWidth: '100vw',
+                bottom: 0,
+                position: 'relative'
             }}
         >
             <div

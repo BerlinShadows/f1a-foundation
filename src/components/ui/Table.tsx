@@ -122,7 +122,7 @@ export default function Table({
             {filterable && (
                 <div style={{
                     width: '100%',
-                    minWidth: '600px',
+                    maxWidth: '100%',
                     padding: '1rem 1.25rem',
                     borderBottom: '1px solid var(--border)',
                     backgroundColor: 'var(--bg-secondary)',
