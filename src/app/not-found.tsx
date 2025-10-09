@@ -34,7 +34,7 @@ export default function NotFound() {
                     404
                 </h1>
                 <p style={{ fontSize: '1.25rem', color: 'var(--text-secondary)', marginBottom: '2rem' }}>
-                    Oops! This page doesn't exist.
+                    {`Oops! This page doesn't exist.`}
                 </p>
                 <Link
                     href="/"
