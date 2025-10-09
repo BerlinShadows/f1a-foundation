@@ -142,10 +142,17 @@ const Footer = () => {
                         Follow us for updates and community news.
                     </p>
                     <div style={{ marginTop: '1rem', display: 'flex', gap: '1rem' }}>
-                        {['Twitter', 'Discord', 'Telegram'].map((social) => (
+                        {[
+                            { key: 'VK', href: 'https://vk.com/mrazotavk' },
+                            { key: 'VK', href: 'https://vk.com/mi.tut.prosta2' },
+                            { key: 'VK', href: 'https://vk.com/fujifu' },
+                            { key: 'TG', href: 'https://t.me/mi_landau' },
+                        ].map((social) => (
                             <a
-                                key={social}
-                                href="#"
+                                key={social.key}
+                                href={social.href}
+                                target="_blank"
+                                rel="noopener noreferrer"
                                 style={{
                                     display: 'flex',
                                     alignItems: 'center',
@@ -167,7 +174,7 @@ const Footer = () => {
                                     e.currentTarget.style.color = 'var(--text-secondary)';
                                 }}
                             >
-                                {social[0]}
+                                {social.key}
                             </a>
                         ))}
                     </div>

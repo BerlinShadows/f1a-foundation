@@ -1,0 +1,26 @@
+{
+    "name": "Reimagine Ownership",
+    "short_name": "Web3 Template",
+    "description": "A new paradigm for digital identity, assets, and collaboration.",
+    "start_url": "/",
+    "display": "standalone",
+    "background_color": "#0f0f12",
+    "theme_color": "#6366f1",
+    "icons": [
+        {
+            "src": "/apple-touch-icon.png",
+            "sizes": "180x180",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-32x32.png",
+            "sizes": "32x32",
+            "type": "image/png"
+        },
+        {
+            "src": "/favicon-16x16.png",
+            "sizes": "16x16",
+            "type": "image/png"
+        }
+    ]
+}
