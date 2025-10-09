@@ -17,6 +17,8 @@ import { CpuChipIcon, DocumentTextIcon, UserCircleIcon } from '@heroicons/react/
 import { useEffect, useState } from 'react';
 import image1 from '@/assets/1.jpg';
 import image2 from '@/assets/3.jpg';
+import VisualFocusAnimation from '@/components/animations/VisualFocusAnimation';
+import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
 
 const carouselItems = [
     {
@@ -33,12 +35,6 @@ const carouselItems = [
     },
     {
         src: image2.src,
-        alt: 'Concept 3',
-        title: 'Transparent Governance',
-        description: 'Participate in protocol decisions with full visibility and verifiable voting.',
-    },
-    {
-        src: image1.src,
         alt: 'Concept 3',
         title: 'Transparent Governance',
         description: 'Participate in protocol decisions with full visibility and verifiable voting.',
@@ -273,7 +269,9 @@ export default function HomePage() {
                 </section>
 
                 <section style={{ marginBottom: '3rem' }} >
-                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>Skeleton Loading</h3>
+                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>
+                        Skeleton Loading
+                    </h3>
                     <div style={{ display: 'flex', alignItems: 'center', gap: '1rem', padding: '1rem', background: 'var(--card-bg)', borderRadius: '12px', border: '1px solid var(--border)' }}>
                         <Skeleton circle width="40px" height="40px" />
                         <div style={{ flex: 1 }}>
@@ -289,7 +287,32 @@ export default function HomePage() {
                     </h3>
                     <ImageCarousel items={carouselItems} autoPlay interval={6000} />
                 </section>
+
+                <section style={{ marginBottom: '3rem' }}>
+                    <h3 style={{ marginBottom: '3rem', color: 'var(--text-primary)' }}>
+                        Visual Focus Demo
+                    </h3>
+                    <VisualFocusContainer isActive={true}>
+                        <h3
+                            style={{
+                                fontSize: '2.5rem',
+                                fontWeight: 700,
+                                background: 'linear-gradient(135deg, var(--accent), var(--gradient-end))',
+                                WebkitBackgroundClip: 'text',
+                                WebkitTextFillColor: 'transparent',
+                                backgroundClip: 'text',
+                                margin: 0,
+                            }}
+                        >
+                            This is a Visual Focus Container
+                        </h3>
+                        <p style={{ marginTop: '1rem', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
+                            A dynamic, adaptive container with particle effects and gradients.
+                        </p>
+                    </VisualFocusContainer>
+                </section>
             </div>
+
         </div>
     );
 }
