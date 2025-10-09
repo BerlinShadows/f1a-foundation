@@ -14,6 +14,8 @@ const Footer = () => {
                 padding: '3rem 1.5rem 2rem',
                 marginTop: 'auto',
                 boxShadow: '0 -8px 30px rgba(0, 0, 0, 0.08)',
+                width: '100%',
+                minWidth: '100vw',
             }}
         >
             <div
@@ -23,6 +25,7 @@ const Footer = () => {
                     display: 'grid',
                     gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
                     gap: '2.5rem',
+                    width: '100%',
                 }}
             >
                 <div>
@@ -180,6 +183,7 @@ const Footer = () => {
                     textAlign: 'center',
                     color: 'var(--text-secondary)',
                     fontSize: '0.9rem',
+                    width: '100%',
                 }}
             >
                 © {new Date().getFullYear()} Protocol Labs. All rights reserved.

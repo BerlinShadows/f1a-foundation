@@ -29,6 +29,8 @@ export default function Header() {
         justifyContent: 'space-between',
         alignItems: 'center',
         boxShadow: '0 2px 12px rgba(0, 0, 0, 0.08)',
+        width: '100%',
+        minWidth: '100vw',
       }}
     >
       <div
@@ -39,6 +41,8 @@ export default function Header() {
           width: '100%',
           maxWidth: '1200px',
           margin: '0 auto',
+          flexWrap: 'wrap',
+          gap: '0.8rem',
         }}
       >
         <div
@@ -67,6 +71,9 @@ export default function Header() {
               listStyle: 'none',
               margin: 0,
               padding: 0,
+              flexWrap: 'wrap',
+              justifyContent: 'center',
+              minWidth: 0,
             }}
           >
             {navItems.map((item) => (
