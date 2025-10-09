@@ -40,7 +40,7 @@ const Footer = () => {
                         Web3<span style={{ opacity: 0.65 }}>Template</span>
                     </div>
                     <p style={{ color: 'var(--text-secondary)', lineHeight: 1.6, fontSize: '0.95rem' }}>
-                        A minimal, themeable starter for modern Web3 applications. Built with Next.js and TypeScript.
+                        Building infrastructure for a user-owned digital future.
                     </p>
                 </div>
 
