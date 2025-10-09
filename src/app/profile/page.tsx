@@ -1,33 +1,38 @@
 'use client';
 
 import { formatEther } from 'viem';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 import Card from '@/components/ui/Card';
 import Chart from '@/components/ui/Chart';
 import Table from '@/components/ui/Table';
-// import Badge from '@/components/ui/Badge';
 import Skeleton from '@/components/ui/Skeleton';
+import Input from '@/components/ui/Input';
+import Button from '@/components/ui/Button';
 
 export default function ProfilePage() {
   const { address, isConnected, chain } = { address: '0xTest', isConnected: true, chain: { name: 'Test' } } // useAccount();
   const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(1000000000000000) }, isLoading: false } // useBalance({});
 
-  const [transactions, setTransactions] = useState([[]]);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({
+    name: 'Alex Johnson',
+    email: 'alex@example.com',
+    bio: 'Web3 builder & digital sovereignty advocate.',
+  });
 
-  useEffect(() => {
-    if (isConnected && address) {
-      setTransactions([[]
-        // ,
-        // ['0x8a3...f2c', '1.25 ETH', <Badge variant="success">Confirmed</Badge>, '2 min ago'],
-        // ['0x1b4...a9e', '0.8 ETH', <Badge variant="warning">Pending</Badge>, '15 min ago'],
-        // ['0x3c7...d1f', '3.1 ETH', <Badge variant="danger">Failed</Badge>, '1 hour ago'],
-        // ['0x9e2...b8a', '0.45 ETH', <Badge variant="success">Confirmed</Badge>, '2 hours ago'],
-        // ['0x4f1...c3d', '1.0 ETH', <Badge variant="success">Confirmed</Badge>, '1 day ago'],
-      ])
-    } else {
-      setTransactions([]);
-    }
-  }, [isConnected, address]);
+  const handleSave = () => {
+    console.log('Saved:', formData);
+    setIsEditing(false);
+  };
+
+  const handleCancel = () => {
+    setFormData({
+      name: 'Alex Johnson',
+      email: 'alex@example.com',
+      bio: 'Web3 builder & digital sovereignty advocate.',
+    });
+    setIsEditing(false);
+  };
 
   return (
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
@@ -35,49 +40,165 @@ export default function ProfilePage() {
         {isConnected ? 'My Profile' : 'Connect Your Wallet'}
       </h1>
 
-      <Card title="Wallet Information">
-        {!isConnected ? (
-          <div style={{ textAlign: 'center', padding: '2rem' }}>
-            <p style={{ color: 'var(--text-secondary)', marginBottom: '1.5rem' }}>
-              Connect your wallet to view your profile and activity.
-            </p>
-          </div>
-        ) : (
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1.5rem' }}>
-            <div>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Address</p>
-              <p style={{ color: 'var(--text-primary)', fontWeight: 500, wordBreak: 'break-all' }}>
-                {address}
-              </p>
+      <div
+        style={{
+          display: 'grid',
+          gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+          gap: '2rem',
+          marginBottom: '2rem',
+        }}
+      >
+        <Card>
+          <div style={{ textAlign: 'center', padding: '1.5rem 0' }}>
+            <div
+              style={{
+                width: '100px',
+                height: '100px',
+                borderRadius: '50%',
+                background: 'var(--bg-secondary)',
+                margin: '0 auto 1.5rem',
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                color: 'var(--text-secondary)',
+                fontSize: '2rem',
+                fontWeight: 'bold',
+              }}
+            >
+              {isConnected ? address?.slice(0, 2).toUpperCase() : '?'}
             </div>
-            <div>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>Network</p>
-              <p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
-                {chain?.name || 'Unknown'}
-              </p>
-            </div>
-            <div>
-              <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.5rem' }}>ETH Balance</p>
-              {isBalanceLoading ? (
-                <Skeleton width="80px" height="1.2rem" />
-              ) : (
-                <p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>
-                  {balanceData ? `${parseFloat(formatEther(balanceData.value)).toFixed(4)} ETH` : '—'}
-                </p>
-              )}
-            </div>
-          </div>
-        )}
-      </Card>
 
-      <Card title="Activity Overview" style={{ marginTop: '2rem' }}>
+            {!isConnected ? (
+              <p style={{ color: 'var(--text-secondary)' }}>
+                Connect your wallet to view your profile.
+              </p>
+            ) : (
+              <div style={{ textAlign: 'left', marginTop: '1rem' }}>
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                    Address
+                  </p>
+                  <p
+                    style={{
+                      color: 'var(--text-primary)',
+                      fontWeight: 500,
+                      wordBreak: 'break-all',
+                      fontSize: '0.95rem',
+                    }}
+                  >
+                    {address}
+                  </p>
+                </div>
+                <div style={{ marginBottom: '1rem' }}>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                    Network
+                  </p>
+                  <p style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.95rem' }}>
+                    {chain?.name || 'Unknown'}
+                  </p>
+                </div>
+                <div>
+                  <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                    ETH Balance
+                  </p>
+                  {isBalanceLoading ? (
+                    <Skeleton width="80px" height="1.2rem" />
+                  ) : (
+                    <p style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.95rem' }}>
+                      {balanceData ? `${parseFloat(formatEther(balanceData.value)).toFixed(4)} ETH` : '—'}
+                    </p>
+                  )}
+                </div>
+              </div>
+            )}
+          </div>
+        </Card>
+
+        <Card title="Profile Settings">
+          {isEditing ? (
+            <div style={{ display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
+              <Input
+                label="Full Name"
+                value={formData.name}
+                onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+              />
+              <Input
+                label="Email"
+                type="email"
+                value={formData.email}
+                onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+              />
+              <div>
+                <label
+                  style={{
+                    display: 'block',
+                    marginBottom: '0.5rem',
+                    fontSize: '0.9rem',
+                    fontWeight: 500,
+                    color: 'var(--text-primary)',
+                  }}
+                >
+                  Bio
+                </label>
+                <textarea
+                  value={formData.bio}
+                  onChange={(e) => setFormData({ ...formData, bio: e.target.value })}
+                  style={{
+                    width: '100%',
+                    padding: '0.75rem',
+                    background: 'var(--bg-secondary)',
+                    border: '1px solid var(--border)',
+                    borderRadius: '10px',
+                    color: 'var(--text-primary)',
+                    fontSize: '1rem',
+                    minHeight: '80px',
+                    resize: 'vertical',
+                  }}
+                />
+              </div>
+              <div style={{ display: 'flex', gap: '0.75rem', justifyContent: 'flex-end' }}>
+                <Button variant="secondary" onClick={handleCancel}>
+                  Cancel
+                </Button>
+                <Button onClick={handleSave}>Save Changes</Button>
+              </div>
+            </div>
+          ) : (
+            <div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                  Full Name
+                </p>
+                <p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{formData.name}</p>
+              </div>
+              <div style={{ marginBottom: '1.25rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                  Email
+                </p>
+                <p style={{ color: 'var(--text-primary)', fontWeight: 500 }}>{formData.email}</p>
+              </div>
+              <div style={{ marginBottom: '1.5rem' }}>
+                <p style={{ color: 'var(--text-secondary)', fontSize: '0.9rem', marginBottom: '0.3rem' }}>
+                  Bio
+                </p>
+                <p style={{ color: 'var(--text-primary)', lineHeight: 1.6 }}>{formData.bio}</p>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'flex-end' }}>
+                <Button onClick={() => setIsEditing(true)}>Edit Profile</Button>
+              </div>
+            </div>
+          )}
+        </Card>
+      </div>
+
+      <Card title="Activity Overview" style={{ marginBottom: '2rem' }}>
         <Chart title="Last 6 Months" height={300} />
       </Card>
 
-      <Card title="Recent Transactions" style={{ marginTop: '2rem' }}>
+      <Card title="Recent Transactions">
         <Table
           headers={['Transaction', 'Amount', 'Status', 'Time']}
-          rows={transactions}
+          rows={[]}
           sortable
           filterable
           filterColumnIndex={2}

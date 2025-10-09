@@ -36,7 +36,7 @@ const referenceItems = [
 
 export default function ReferencePage() {
   return (
-    <div style={{ maxWidth: '1200px', margin: '0 auto', height: '100vh' }}>
+    <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)' }}>Reference</h1>
 
       <div
