@@ -219,7 +219,7 @@ export default function HomePage() {
                         headers={['Transaction', 'Amount', 'Status', 'Time']}
                         rows={mockRows}
                         sortable={true}
-                        filterable={true}
+                        filterable={false}
                     />
                 </section>
 

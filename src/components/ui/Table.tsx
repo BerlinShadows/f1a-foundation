@@ -180,7 +180,7 @@ export default function Table({
                     <tr>
                         {headers.map((header, i) => (
                             <th
-                                key={i}
+                                key={`header-${i}`}
                                 onClick={() => handleSort(i)}
                                 style={{
                                     padding: '1rem 1.25rem',

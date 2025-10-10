@@ -1,13 +1,14 @@
 'use client';
 
 import { formatEther } from 'viem';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Chart from '@/components/ui/Chart';
 import Table from '@/components/ui/Table';
 import Skeleton from '@/components/ui/Skeleton';
 import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
+import Badge from '@/components/ui/Badge';
 
 export default function ProfilePage() {
   const { address, isConnected, chain } = { address: '0xTest', isConnected: true, chain: { name: 'Test' } } // useAccount();
@@ -19,6 +20,23 @@ export default function ProfilePage() {
     email: 'alex@example.com',
     bio: 'Web3 builder & digital sovereignty advocate.',
   });
+
+  const [mockRows, setMockRows] = useState<(string | number | React.ReactNode)[][]>([]);
+
+  useEffect(() => {
+    const generateMockRows = () => {
+      return Array.from({ length: 25 }, (_, i) => [
+        `0x${Math.random().toString(16).slice(2, 10)}...${Math.random().toString(16).slice(2, 6)}`,
+        `${(Math.random() * 10).toFixed(2)} ETH`,
+        i % 3 === 0 ? <Badge variant="success">Confirmed</Badge> :
+          i % 3 === 1 ? <Badge variant="warning">Pending</Badge> :
+            <Badge variant="danger">Failed</Badge>,
+        `${Math.floor(Math.random() * 60)} min ago`,
+      ]);
+    };
+
+    setMockRows(generateMockRows());
+  }, []);
 
   const handleSave = () => {
     console.log('Saved:', formData);
@@ -198,7 +216,7 @@ export default function ProfilePage() {
       <Card title="Recent Transactions">
         <Table
           headers={['Transaction', 'Amount', 'Status', 'Time']}
-          rows={[]}
+          rows={mockRows}
           sortable
           filterable
           filterColumnIndex={2}

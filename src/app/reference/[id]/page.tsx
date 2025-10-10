@@ -102,7 +102,7 @@ export default function ReferenceArticlePage() {
             <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
                 <h1 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>Article Not Found</h1>
                 <p style={{ color: 'var(--text-secondary)' }}>
-                    The article you're looking for doesn't exist.
+                    {`The article you're looking for doesn't exist.`}
                 </p>
                 <Link
                     href="/reference"
