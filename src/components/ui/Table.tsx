@@ -21,7 +21,7 @@ export default function Table2({
     const [sortConfig, setSortConfig] = useState<{ key: number; direction: 'asc' | 'desc' } | null>(null);
     const [filterValue, setFilterValue] = useState<string>('all');
 
-    const getTextFromCell = (cell: any): string => {
+    const getTextFromCell = (cell: string | number | React.ReactNode): string => {
         if (typeof cell === 'string' || typeof cell === 'number') {
             return String(cell);
         }
@@ -48,7 +48,7 @@ export default function Table2({
             const text = getTextFromCell(cell);
             return text.toLowerCase().includes(filterValue.toLowerCase());
         });
-    }, [originalRows, filterable, filterValue, filterColumnIndex]);
+    }, [originalRows, filterable, filterValue, filterColumnIndex, getTextFromCell]);
 
     const sortedRows = useMemo(() => {
         if (!sortable || !sortConfig) return filteredRows;
@@ -63,7 +63,7 @@ export default function Table2({
             }
             return 0;
         });
-    }, [filteredRows, sortable, sortConfig]);
+    }, [filteredRows, sortable, sortConfig, getTextFromCell]);
 
     const totalPages = Math.ceil(sortedRows.length / pageSize);
     const paginatedRows = sortedRows.slice(
@@ -80,7 +80,7 @@ export default function Table2({
             if (text) values.add(text);
         });
         return ['all', ...Array.from(values)];
-    }, [originalRows, filterable, filterColumnIndex]);
+    }, [originalRows, filterable, filterColumnIndex, getTextFromCell]);
 
     const handleSort = (columnIndex: number) => {
         if (!sortable) return;
