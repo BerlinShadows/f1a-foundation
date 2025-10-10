@@ -1,7 +1,5 @@
 'use client';
 
-import FloatingShapes from '@/components/presentation/FloatingShapes';
-import PulsingBackground from '@/components/presentation/PulsingBackground';
 import Link from 'next/link';
 import './test.css';
 import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
@@ -10,9 +8,6 @@ export default function NotFound() {
     return (
         <div style={{ margin: '0 auto' }}>
             <VisualFocusContainer isActive={true}>
-                {/* <AccentBackground isActive={true} duration={Infinity} /> */}
-                {/* <PulsingBackground /> */}
-                {/* <FloatingShapes /> */}
                 <div
                     style={{
                         display: 'flex',

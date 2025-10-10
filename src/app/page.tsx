@@ -1,8 +1,8 @@
 'use client';
 
-import GradientBackground from '@/components/presentation/GradientBackground';
-import ImageCarousel from '@/components/presentation/ImageCarousel';
-import Marquee from '@/components/presentation/Marquee';
+import GradientBackground from '@/components/animations/GradientBackground';
+import ImageCarousel from '@/components/ui/ImageCarousel';
+import Marquee from '@/components/animations/Marquee';
 import Badge from '@/components/ui/Badge';
 import Button from '@/components/ui/Button';
 import Card from '@/components/ui/Card';
@@ -17,7 +17,6 @@ import { CpuChipIcon, DocumentTextIcon, UserCircleIcon } from '@heroicons/react/
 import { useEffect, useState } from 'react';
 import image1 from '@/assets/1.jpg';
 import image2 from '@/assets/3.jpg';
-import VisualFocusAnimation from '@/components/animations/VisualFocusAnimation';
 import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
 
 const carouselItems = [
