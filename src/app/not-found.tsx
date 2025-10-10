@@ -1,7 +1,7 @@
 'use client';
 
 import Link from 'next/link';
-import './test.css';
+import './not-found.css';
 import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
 
 export default function NotFound() {
