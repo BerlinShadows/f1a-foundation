@@ -26,56 +26,56 @@ const referenceArticles: ReferenceArticle[] = [
     title: 'Getting Started',
     description: 'Learn how to connect your wallet and navigate the interface.',
     category: 'basics',
-    href: '#',
+    href: '/reference/getting-started',
   },
   {
     id: 'wallet-security',
     title: 'Wallet Security',
     description: 'Best practices for securing your private keys and assets.',
     category: 'security',
-    href: '#',
+    href: '/reference/wallet-security',
   },
   {
     id: 'transaction-types',
     title: 'Transaction Types',
     description: 'Understand different actions: transfers, swaps, staking, and more.',
     category: 'basics',
-    href: '#',
+    href: '/reference/transaction-types',
   },
   {
     id: 'smart-contracts',
     title: 'Smart Contracts',
     description: 'How to interact with and deploy smart contracts securely.',
     category: 'development',
-    href: '#',
+    href: '/reference/4',
   },
   {
     id: 'supported-networks',
     title: 'Supported Networks',
     description: 'List of blockchains and their configuration details.',
     category: 'ecosystem',
-    href: '#',
+    href: '/reference/5',
   },
   {
     id: 'api-documentation',
     title: 'API Documentation',
     description: 'For developers: endpoints, rate limits, and examples.',
     category: 'development',
-    href: '#',
+    href: '/reference/6',
   },
   {
     id: 'glossary',
     title: 'Glossary',
     description: 'Key terms: TVL, APR, gas fee, nonce, and more.',
     category: 'basics',
-    href: '#',
+    href: '/reference/7',
   },
   {
     id: 'community-guides',
     title: 'Community Guides',
     description: 'Tutorials and walkthroughs from the community.',
     category: 'ecosystem',
-    href: '#',
+    href: '/reference/8',
   },
 ];
 
@@ -112,15 +112,20 @@ export default function ReferencePage() {
     <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
       <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
         <h1 style={{ fontSize: '2rem', color: 'var(--text-primary)' }}>Reference</h1>
-        <div style={{ width: '300px' }}>
-          <Input
-            placeholder="Search articles..."
-            icon={<MagnifyingGlassIcon style={{ width: '18px', height: '18px' }} />}
-            value={searchQuery}
-            onChange={(e) => setSearchQuery(e.target.value)}
-          />
-        </div>
       </div>
+
+      <Card style={{ marginBottom: '2rem' }}>
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '1rem', alignItems: 'flex-end' }}>
+          <div style={{ flex: 1, minWidth: '250px' }}>
+            <Input
+              placeholder="Search by hash or details..."
+              icon={<MagnifyingGlassIcon style={{ width: '18px', height: '18px' }} />}
+              value={searchQuery}
+              onChange={(e) => setSearchQuery(e.target.value)}
+            />
+          </div>
+        </div>
+      </Card>
 
       {Object.entries(groupedArticles).map(([categoryKey, articles]) => {
         const category = categories[categoryKey as keyof typeof categories];
