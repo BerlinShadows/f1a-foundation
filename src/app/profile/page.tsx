@@ -16,8 +16,8 @@ export default function ProfilePage() {
 
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
-    name: 'Alex Johnson',
-    email: 'alex@example.com',
+    name: 'Mikhail Landau',
+    email: 'mi_landau@outlook.com',
     bio: 'Web3 builder & digital sovereignty advocate.',
   });
 
