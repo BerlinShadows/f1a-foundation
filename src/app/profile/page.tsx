@@ -11,8 +11,8 @@ import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 
 export default function ProfilePage() {
-  const { address, isConnected, chain } = { address: '0xTest', isConnected: true, chain: { name: 'Test' } } // useAccount();
-  const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(1000000000000000) }, isLoading: false } // useBalance({});
+  const { address, isConnected, chain } = { address: '0x18b9529865D47cc2A20Ba61095609D10Dd637722', isConnected: true, chain: { name: 'ETH' } } // useAccount();
+  const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(9999999999999999999999) }, isLoading: false } // useBalance({});
 
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({
@@ -45,8 +45,8 @@ export default function ProfilePage() {
 
   const handleCancel = () => {
     setFormData({
-      name: 'Alex Johnson',
-      email: 'alex@example.com',
+      name: 'Mikhail Landau',
+      email: 'mi_landau@outlook.com',
       bio: 'Web3 builder & digital sovereignty advocate.',
     });
     setIsEditing(false);
