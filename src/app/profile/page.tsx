@@ -10,7 +10,7 @@ import Input from '@/components/ui/Input';
 import Button from '@/components/ui/Button';
 import Badge from '@/components/ui/Badge';
 
-export default function ProfilePage() {
+export default function P1() {
   const { address, isConnected, chain } = { address: '0x18b9529865D47cc2A20Ba61095609D10Dd637722', isConnected: true, chain: { name: 'ETH' } } // useAccount();
   const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(9999999999999999999999) }, isLoading: false } // useBalance({});
 

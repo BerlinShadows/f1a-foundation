@@ -86,7 +86,7 @@ const categories = {
   ecosystem: { name: 'Ecosystem', icon: GlobeAltIcon, color: '#ec4899' },
 };
 
-export default function ReferencePage() {
+export default function R1() {
   const [searchQuery, setSearchQuery] = useState('');
 
   const filteredArticles = useMemo(() => {

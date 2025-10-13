@@ -82,7 +82,7 @@ Minting, buying, selling, and transferring NFTs.`,
     },
 };
 
-export default function ReferenceArticlePage() {
+export default function R2() {
     const params = useParams();
     const id = params.id as string;
     const [article, setArticle] = useState<ReferenceArticle | null>(null);

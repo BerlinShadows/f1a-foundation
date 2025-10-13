@@ -54,7 +54,7 @@ const mockLogs = [
   },
 ];
 
-export default function AuditPage() {
+export default function A1() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedAction, setSelectedAction] = useState('all');
 
