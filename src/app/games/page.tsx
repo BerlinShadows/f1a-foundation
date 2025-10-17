@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
 export default function GamesPage() {
     const games = [
@@ -12,11 +13,35 @@ export default function GamesPage() {
         },
     ];
 
-    const globalStats = {
+    const [stats, setStats] = useState({
         totalGames: games.length,
         totalSessions: 1247,
         currentOnline: 86,
-    };
+    });
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setStats(prev => {
+                const onlineChange = Math.floor(Math.random() * 5) - 2; // -2 to +2
+                let newOnline = prev.currentOnline + onlineChange;
+                if (newOnline < 50) newOnline = 50; // минимум
+                if (newOnline > 120) newOnline = 120; // максимум
+
+                let newSessions = prev.totalSessions;
+                if (Math.random() < 0.3) {
+                    newSessions += 1;
+                }
+
+                return {
+                    totalGames: prev.totalGames,
+                    totalSessions: newSessions,
+                    currentOnline: newOnline,
+                };
+            });
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
 
     return (
         <div style={{
@@ -127,9 +152,9 @@ export default function GamesPage() {
                     marginBottom: '2.5rem',
                 }}>
                     {[
-                        { label: 'Total Games', value: globalStats.totalGames, color: 'var(--text-primary)' },
-                        { label: 'Sessions Played', value: globalStats.totalSessions, color: 'var(--accent)' },
-                        { label: 'Online Now', value: `${globalStats.currentOnline} players`, color: '#6366f1' },
+                        { label: 'Total Games', value: stats.totalGames, color: 'var(--text-primary)' },
+                        { label: 'Sessions Played', value: stats.totalSessions, color: 'var(--accent)' },
+                        { label: 'Online Now', value: `${stats.currentOnline} players`, color: '#6366f1' },
                     ].map((item, i) => (
                         <div key={i} style={{
                             background: 'var(--card-bg)',
@@ -138,6 +163,7 @@ export default function GamesPage() {
                             padding: '1rem 1.5rem',
                             minWidth: '140px',
                             textAlign: 'center',
+                            transition: 'all 0.3s ease',
                         }}>
                             <div style={{ fontSize: '0.9rem', color: 'var(--text-secondary)', marginBottom: '0.5rem' }}>
                                 {item.label}
@@ -148,6 +174,7 @@ export default function GamesPage() {
                         </div>
                     ))}
                 </div>
+
 
                 <div style={{
                     background: 'var(--card-bg)',
