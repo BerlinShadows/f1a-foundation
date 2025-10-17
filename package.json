@@ -5,6 +5,7 @@
   "description": "testing polygon",
   "author": "mi_landau",
   "license": "ISC",
+  "homepage": "https://github.com/BerlinShadows/f1a-foundation",
   "scripts": {
     "dev": "next dev --turbopack",
     "build": "next build --turbopack",

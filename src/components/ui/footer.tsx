@@ -67,6 +67,7 @@ const Footer = () => {
                             { name: 'Ecosystem', href: '/reference' },
                             { name: 'Identity', href: '/profile' },
                             { name: 'Activity', href: '/audit' },
+                            { name: 'Games', href: '/games' }
                         ].map((item) => (
                             <li key={item.href} style={{ marginBottom: '0.75rem' }}>
                                 <Link

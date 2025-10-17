@@ -99,7 +99,7 @@ export default function R2() {
 
     if (notFound) {
         return (
-            <div style={{ maxWidth: '800px', margin: '0 auto', padding: '2rem' }}>
+            <div style={{ margin: '0 auto' }}>
                 <h1 style={{ fontSize: '2rem', color: 'var(--text-primary)', marginBottom: '1rem' }}>Article Not Found</h1>
                 <p style={{ color: 'var(--text-secondary)' }}>
                     {`The article you're looking for doesn't exist.`}

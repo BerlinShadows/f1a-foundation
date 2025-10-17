@@ -48,6 +48,10 @@ ul {
 
 :root {
     --theme-name: 'dark';
+    --coin-heads-start: #fbbf24;
+    --coin-heads-end: #f59e0b;
+    --coin-tails-start: #cbd5e1;
+    --coin-tails-end: #94a3b8;
 }
 
 .header-nav-link {

@@ -9,6 +9,7 @@ const navItems = [
   { name: 'Ecosystem', href: '/reference' },
   { name: 'Identity', href: '/profile' },
   { name: 'Activity', href: '/audit' },
+  { name: 'Games', href: '/games' }
 ];
 
 export default function Header() {

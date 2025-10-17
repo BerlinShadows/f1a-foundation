@@ -54,10 +54,11 @@ export default function P1() {
 
   return (
     <div style={{ margin: '0 auto' }}>
-      <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)' }}>
-        {isConnected ? 'My Profile' : 'Connect Your Wallet'}
-      </h1>
-
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '2rem' }}>
+        <h1 style={{ fontSize: '2rem', marginBottom: '2rem', color: 'var(--text-primary)' }}>
+          {isConnected ? 'My Profile' : 'Connect Your Wallet'}
+        </h1>
+      </div>
       <div
         style={{
           display: 'grid',
