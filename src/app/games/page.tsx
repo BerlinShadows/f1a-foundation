@@ -15,7 +15,7 @@ function useAnimatedNumber(target: number, duration: number = 800) {
             return;
         }
 
-        startValueRef.current = displayValue; // начинаем с текущего отображаемого
+        startValueRef.current = displayValue;
         startTimeRef.current = performance.now();
 
         const animate = (currentTime: number) => {
@@ -65,10 +65,10 @@ export default function GamesPage() {
     useEffect(() => {
         const interval = setInterval(() => {
             setStats(prev => {
-                const onlineChange = Math.floor(Math.random() * 5) - 2; // -2 to +2
+                const onlineChange = Math.floor(Math.random() * 5) - 2;
                 let newOnline = prev.currentOnline + onlineChange;
-                if (newOnline < 50) newOnline = 50; // минимум
-                if (newOnline > 120) newOnline = 120; // максимум
+                if (newOnline < 50) newOnline = 50;
+                if (newOnline > 120) newOnline = 120;
 
                 let newSessions = prev.totalSessions;
                 if (Math.random() < 0.3) {

@@ -15,7 +15,6 @@ export default function ParticleCanvasInContainer() {
         let width = canvas.width;
         let height = canvas.height;
 
-        // Размеры из родителя
         const resize = () => {
             const parent = canvas.parentElement;
             if (parent) {
@@ -29,7 +28,6 @@ export default function ParticleCanvasInContainer() {
         resize();
         window.addEventListener('resize', resize);
 
-        // Частицы
         const particles: {
             x: number;
             y: number;

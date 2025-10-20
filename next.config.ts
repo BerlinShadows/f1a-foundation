@@ -16,7 +16,6 @@ const nextConfig: NextConfig = {
             splitStrings: true,
             splitStringsChunkLength: 4,
 
-            // Защищаем имена, критичные для React/Next.js
             reservedNames: [
               'React',
               'useState',
