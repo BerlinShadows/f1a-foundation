@@ -36,10 +36,10 @@ export default function RootLayout({
 }: Readonly<{ children: React.ReactNode }>) {
     return (
 
-        <ClientLayout>
-            <LoadingProvider>
+        <LoadingProvider>
+            <ClientLayout>
                 {children}
-            </LoadingProvider>
-        </ClientLayout>
+            </ClientLayout>
+        </LoadingProvider>
     );
 }
