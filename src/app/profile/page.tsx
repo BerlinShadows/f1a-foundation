@@ -12,7 +12,7 @@ import Badge from '@/components/ui/Badge';
 
 export default function P1() {
   const { address, isConnected, chain } = { address: '0x18b9529865D47cc2A20Ba61095609D10Dd637722', isConnected: true, chain: { name: 'ETH' } } // useAccount();
-  const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(9999999999999999999999) }, isLoading: false } // useBalance({});
+  const { data: balanceData, isLoading: isBalanceLoading } = { data: { value: BigInt(999999999999999) }, isLoading: false } // useBalance({});
 
   const [isEditing, setIsEditing] = useState(false);
   const [formData, setFormData] = useState({

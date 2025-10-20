@@ -1,7 +1,50 @@
 'use client';
 
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
+
+function useAnimatedNumber(target: number, duration: number = 800) {
+    const [displayValue, setDisplayValue] = useState(target);
+    const startValueRef = useRef(target);
+    const startTimeRef = useRef(0);
+    const animationRef = useRef<number | null>(null);
+
+    useEffect(() => {
+        if (target === startValueRef.current) {
+            setDisplayValue(target);
+            return;
+        }
+
+        startValueRef.current = displayValue; // начинаем с текущего отображаемого
+        startTimeRef.current = performance.now();
+
+        const animate = (currentTime: number) => {
+            const elapsed = currentTime - startTimeRef.current;
+            const progress = Math.min(elapsed / duration, 1);
+
+            const currentValue = startValueRef.current + (target - startValueRef.current) * easeOutQuad(progress);
+            setDisplayValue(Math.round(currentValue));
+
+            if (progress < 1) {
+                animationRef.current = requestAnimationFrame(animate);
+            }
+        };
+
+        animationRef.current = requestAnimationFrame(animate);
+
+        return () => {
+            if (animationRef.current) {
+                cancelAnimationFrame(animationRef.current);
+            }
+        };
+    }, [target, duration]);
+
+    return displayValue;
+}
+
+function easeOutQuad(t: number): number {
+    return 1 - Math.pow(1 - t, 2);
+}
 
 export default function GamesPage() {
     const games = [
@@ -42,6 +85,33 @@ export default function GamesPage() {
 
         return () => clearInterval(interval);
     }, []);
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setStats(prev => {
+                const onlineChange = Math.floor(Math.random() * 5) - 2;
+                let newOnline = prev.currentOnline + onlineChange;
+                if (newOnline < 50) newOnline = 50;
+                if (newOnline > 120) newOnline = 120;
+
+                let newSessions = prev.totalSessions;
+                if (Math.random() < 0.3) {
+                    newSessions += 1;
+                }
+
+                return {
+                    totalGames: prev.totalGames,
+                    totalSessions: newSessions,
+                    currentOnline: newOnline,
+                };
+            });
+        }, 4000);
+
+        return () => clearInterval(interval);
+    }, []);
+
+    const animatedSessions = useAnimatedNumber(stats.totalSessions);
+    const animatedOnline = useAnimatedNumber(stats.currentOnline);
 
     return (
         <div style={{
@@ -119,31 +189,49 @@ export default function GamesPage() {
                             <Link
                                 href={game.href}
                                 style={{
-                                    display: 'inline-block',
+                                    display: 'flex',
+                                    justifyContent: 'center',
+                                    alignItems: 'center',
                                     background: 'linear-gradient(90deg, var(--gradient-start), var(--gradient-end))',
                                     color: 'white',
                                     textDecoration: 'none',
-                                    padding: '0.75rem 1.25rem',
+                                    padding: '0.75rem 1rem',
                                     borderRadius: '10px',
                                     fontWeight: '600',
-                                    textAlign: 'center',
                                     marginTop: '1rem',
-                                    transition: 'background 0.2s ease, transform 0.1s ease',
+                                    transition: 'background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease',
+                                    maxWidth: '100%',
+                                    width: '100%',
+                                    boxSizing: 'border-box',
+                                    overflow: 'hidden',
+                                    boxShadow: '0 4px 8px rgba(0,0,0,0.05)',
                                 }}
                                 onMouseEnter={(e) => {
                                     e.currentTarget.style.background = 'linear-gradient(90deg, var(--accent-hover), var(--accent-hover))';
                                     e.currentTarget.style.transform = 'scale(1.03)';
+                                    e.currentTarget.style.boxShadow = '0 6px 12px rgba(0,0,0,0.1)';
                                 }}
                                 onMouseLeave={(e) => {
                                     e.currentTarget.style.background = 'linear-gradient(90deg, var(--gradient-start), var(--gradient-end))';
                                     e.currentTarget.style.transform = 'scale(1)';
+                                    e.currentTarget.style.boxShadow = '0 4px 8px rgba(0,0,0,0.05)';
                                 }}
                             >
-                                Play
+                                <span style={{
+                                    fontSize: 'clamp(0.9rem, 4vw, 1.2rem)',
+                                    whiteSpace: 'nowrap',
+                                    textOverflow: 'ellipsis',
+                                    overflow: 'hidden',
+                                    maxWidth: '100%',
+                                    textAlign: 'center',
+                                }}>
+                                    Play
+                                </span>
                             </Link>
                         </div>
                     ))}
                 </div>
+
                 <div style={{
                     display: 'flex',
                     gap: '1.5rem',
@@ -153,8 +241,8 @@ export default function GamesPage() {
                 }}>
                     {[
                         { label: 'Total Games', value: stats.totalGames, color: 'var(--text-primary)' },
-                        { label: 'Sessions Played', value: stats.totalSessions, color: 'var(--accent)' },
-                        { label: 'Online Now', value: `${stats.currentOnline} players`, color: '#6366f1' },
+                        { label: 'Sessions Played', value: animatedSessions, color: 'var(--accent)' },
+                        { label: 'Online Now', value: `${animatedOnline} players`, color: '#6366f1' },
                     ].map((item, i) => (
                         <div key={i} style={{
                             background: 'var(--card-bg)',
@@ -174,7 +262,6 @@ export default function GamesPage() {
                         </div>
                     ))}
                 </div>
-
 
                 <div style={{
                     background: 'var(--card-bg)',

@@ -5,6 +5,7 @@ import { useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
+import Table from '@/components/ui/Table';
 
 export default function FlipCoinPage() {
     const [isFlipping, setIsFlipping] = useState(false);
@@ -229,56 +230,34 @@ export default function FlipCoinPage() {
             </Card>
 
             {history.length > 0 && (
-                <Card style={{
-                    background: 'var(--card-bg)',
-                    border: '1px solid var(--border)',
-                    borderRadius: '12px',
-                    padding: '1.5rem',
-                    width: '100%',
-                    maxWidth: '400px',
-                }}>
-                    <h3 style={{
-                        fontSize: '1.1rem',
-                        fontWeight: 'bold',
-                        color: 'var(--text-primary)',
-                        margin: '0 0 0.75rem',
-                    }}>
-                        Последние броски:
-                    </h3>
-                    <ul style={{
-                        listStyle: 'none',
-                        padding: 0,
-                        margin: 0,
-                    }}>
-                        {history.map((item, index) => (
-                            <li key={index} style={{
-                                padding: '0.5rem 0',
-                                borderBottom: index < history.length - 1 ? '1px solid var(--border)' : 'none',
-                                color: 'var(--text-secondary)',
-                            }}>
-                                {item}
-                            </li>
-                        ))}
-                    </ul>
-                </Card>
-            )}
+                <Card title='Последние броски:'>
+                    <Table
+                        pageSize={5}
+                        rows={history.map((item, index) => (
+                            [item]
+                        ))} headers={[]} />
+                </Card >
+            )
+            }
 
-            {result && (
-                <div
-                    style={{
-                        marginTop: '1rem',
-                        fontSize: '1.2rem',
-                        fontWeight: 'bold',
-                        color: result === 'heads'
-                            ? 'var(--coin-heads-start)'
-                            : 'var(--coin-tails-start)',
-                        textAlign: 'center',
-                        animation: 'fadeIn 0.5s ease-in-out',
-                    }}
-                >
-                    {result === 'heads' ? 'Орёл!' : 'Решка!'}
-                </div>
-            )}
+            {
+                result && (
+                    <div
+                        style={{
+                            marginTop: '1rem',
+                            fontSize: '1.2rem',
+                            fontWeight: 'bold',
+                            color: result === 'heads'
+                                ? 'var(--coin-heads-start)'
+                                : 'var(--coin-tails-start)',
+                            textAlign: 'center',
+                            animation: 'fadeIn 0.5s ease-in-out',
+                        }}
+                    >
+                        {result === 'heads' ? 'Орёл!' : 'Решка!'}
+                    </div>
+                )
+            }
 
             <style jsx>{`
                 @keyframes fadeIn {
