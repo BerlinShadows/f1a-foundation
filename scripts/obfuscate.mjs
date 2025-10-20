@@ -1,4 +1,4 @@
-import { obfuscate } from 'javascript-obfuscator';
+import obfuscator from 'javascript-obfuscator';
 import fs from 'fs';
 import path from 'path';
 
@@ -8,7 +8,8 @@ const files = fs.readdirSync(chunksDir).filter(f => f.endsWith('.js'));
 for (const file of files) {
   const filePath = path.join(chunksDir, file);
   const code = fs.readFileSync(filePath, 'utf8');
-  const result = obfuscate(code, {
+
+  const result = obfuscator.obfuscate(code, {
     rotateStringArray: true,
     stringArray: true,
     stringArrayEncoding: ['base64'],
@@ -24,6 +25,7 @@ for (const file of files) {
     debugProtection: false,
     transformObjectKeys: false,
   });
+
   fs.writeFileSync(filePath, result.getObfuscatedCode());
 }
 
