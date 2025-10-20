@@ -8,7 +8,7 @@
   "homepage": "https://github.com/BerlinShadows/f1a-foundation",
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build --turbopack",
+    "build": "next build && node scripts/obfuscate.mjs",
     "start": "next start",
     "lint": "eslint"
   },
