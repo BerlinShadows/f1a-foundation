@@ -1,4 +1,4 @@
-import React, { useState, useMemo } from 'react';
+import React, { useState, useMemo, useCallback } from 'react';
 
 interface TableProps {
     headers: string[];
@@ -21,7 +21,7 @@ export default function Table2({
     const [sortConfig, setSortConfig] = useState<{ key: number; direction: 'asc' | 'desc' } | null>(null);
     const [filterValue, setFilterValue] = useState<string>('all');
 
-    const getTextFromCell = (cell: string | number | React.ReactNode): string => {
+    const getTextFromCell = useCallback((cell: string | number | React.ReactNode): string => {
         if (typeof cell === 'string' || typeof cell === 'number') {
             return String(cell);
         }
@@ -39,7 +39,7 @@ export default function Table2({
             }
         }
         return '';
-    };
+    }, []);
 
     const filteredRows = useMemo(() => {
         if (!filterable || filterValue === 'all') return originalRows;

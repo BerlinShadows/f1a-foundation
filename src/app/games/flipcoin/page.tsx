@@ -6,9 +6,13 @@ import Card from '@/components/ui/Card';
 import Button from '@/components/ui/Button';
 import VisualFocusContainer from '@/components/animations/VisualFocusContainer';
 import Table from '@/components/ui/Table';
+import PlayerNameSetup from '@/components/ui/PlayerNameSetup';
 
 export default function FlipCoinPage() {
     const [isFlipping, setIsFlipping] = useState(false);
+    const [playerName, setPlayerName] = useState<string | null>(null);
+
+
     const [result, setResult] = useState<'heads' | 'tails' | null>(null);
     const [history, setHistory] = useState<string[]>([]);
     const [stats, setStats] = useState({
@@ -18,6 +22,7 @@ export default function FlipCoinPage() {
     });
 
     const [idleRotation, setIdleRotation] = useState(0);
+
 
     useEffect(() => {
         if (isFlipping) return;
@@ -57,6 +62,11 @@ export default function FlipCoinPage() {
     useEffect(() => {
         localStorage.setItem('flipcoin-stats', JSON.stringify(stats));
     }, [stats]);
+
+
+    if (!playerName) {
+        return <PlayerNameSetup onReady={setPlayerName} />;
+    }
 
     return (
         <div style={{
@@ -233,7 +243,7 @@ export default function FlipCoinPage() {
                 <Card title='Последние броски:'>
                     <Table
                         pageSize={5}
-                        rows={history.map((item, index) => (
+                        rows={history.map((item) => (
                             [item]
                         ))} headers={[]} />
                 </Card >
@@ -265,6 +275,7 @@ export default function FlipCoinPage() {
                     to { opacity: 1; transform: translateY(0); }
                 }
             `}</style>
+
         </div >
     );
 }

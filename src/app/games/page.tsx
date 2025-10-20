@@ -1,6 +1,7 @@
 'use client';
 
-import Link from 'next/link';
+import { useLoading } from '@/components/presentation/useLoading';
+import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
 function useAnimatedNumber(target: number, duration: number = 800) {
@@ -37,7 +38,7 @@ function useAnimatedNumber(target: number, duration: number = 800) {
                 cancelAnimationFrame(animationRef.current);
             }
         };
-    }, [target, duration]);
+    }, [target, duration, displayValue]);
 
     return displayValue;
 }
@@ -47,6 +48,8 @@ function easeOutQuad(t: number): number {
 }
 
 export default function GamesPage() {
+    const router = useRouter();
+    const [isLoading, setIsLoading] = useState(false);
     const games = [
         {
             id: 'flip',
@@ -54,6 +57,18 @@ export default function GamesPage() {
             description: 'Toss a coin and see what fate decides!',
             href: '/games/flipcoin',
         },
+        {
+            id: 'dice',
+            title: 'Roll Dice',
+            description: 'Roll two dice and see the sum!',
+            href: '/games/dice',
+        },
+        {
+            id: 'guess',
+            title: 'Guess the Target',
+            description: 'Угадайте число, ближе всего к цели!',
+            href: '/games/guess',
+        }
     ];
 
     const [stats, setStats] = useState({
@@ -112,6 +127,17 @@ export default function GamesPage() {
 
     const animatedSessions = useAnimatedNumber(stats.totalSessions);
     const animatedOnline = useAnimatedNumber(stats.currentOnline);
+
+    const { show } = useLoading();
+    const handlePlay = (href: string) => {
+        setIsLoading(true);
+        show('spinner');
+
+
+        setTimeout(() => {
+            router.push(href);
+        }, 1300);
+    };
 
     return (
         <div style={{
@@ -186,21 +212,21 @@ export default function GamesPage() {
                                 </p>
                             </div>
 
-                            <Link
-                                href={game.href}
+                            <button
+                                onClick={() => handlePlay(game.href)}
                                 style={{
                                     display: 'flex',
                                     justifyContent: 'center',
                                     alignItems: 'center',
                                     background: 'linear-gradient(90deg, var(--gradient-start), var(--gradient-end))',
                                     color: 'white',
-                                    textDecoration: 'none',
+                                    border: 'none',
                                     padding: '0.75rem 1rem',
                                     borderRadius: '10px',
                                     fontWeight: '600',
                                     marginTop: '1rem',
+                                    cursor: 'pointer',
                                     transition: 'background 0.2s ease, transform 0.1s ease, box-shadow 0.2s ease',
-                                    maxWidth: '100%',
                                     width: '100%',
                                     boxSizing: 'border-box',
                                     overflow: 'hidden',
@@ -227,7 +253,7 @@ export default function GamesPage() {
                                 }}>
                                     Play
                                 </span>
-                            </Link>
+                            </button>
                         </div>
                     ))}
                 </div>
@@ -291,6 +317,38 @@ export default function GamesPage() {
                 </div>
 
             </div>
+            {isLoading && (
+                <div style={{
+                    position: 'fixed',
+                    top: 0,
+                    left: 0,
+                    width: '100vw',
+                    height: '100vh',
+                    background: 'var(--bg)',
+                    display: 'flex',
+                    justifyContent: 'center',
+                    alignItems: 'center',
+                    zIndex: 9999,
+                    transition: 'opacity 0.3s ease',
+                }}>
+                    <div style={{
+                        width: '48px',
+                        height: '48px',
+                        border: '4px solid #f3f3f3',
+                        borderTop: '4px solid var(--accent)',
+                        borderRadius: '50%',
+                        animation: 'spin 1s linear infinite',
+                    }} />
+                </div>
+            )}
+
+            <style>{`
+                @keyframes spin {
+                    0% { transform: rotate(0deg); }
+                    100% { transform: rotate(360deg); }
+                }
+            `}</style>
+
         </div>
     );
 }

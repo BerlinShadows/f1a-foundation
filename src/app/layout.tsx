@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import ClientLayout from './client-layout';
+import { LoadingProvider } from "@/components/presentation/useLoading";
 
 export const metadata: Metadata = {
     title: {
@@ -34,6 +35,11 @@ export default function RootLayout({
     children,
 }: Readonly<{ children: React.ReactNode }>) {
     return (
-        <ClientLayout>{children}</ClientLayout>
+
+        <ClientLayout>
+            <LoadingProvider>
+                {children}
+            </LoadingProvider>
+        </ClientLayout>
     );
 }

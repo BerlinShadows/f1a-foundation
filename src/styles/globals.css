@@ -84,6 +84,8 @@ ul {
     --header-border: rgba(45, 45, 58, 0.3);
     --card-bg: rgba(22, 22, 29, 0.5);
     --marquee: rgba(230, 230, 255, 0.6);
+    --dice: 'white';
+    --dice-border: '2px solid #e2e8f0';
 }
 
 [data-theme='light'] {
@@ -112,6 +114,8 @@ ul {
         0 0 4px rgba(255, 255, 255, 0.2);
     --card-bg: rgba(255, 255, 255, 0.7);
     --marquee: rgba(182, 30, 106, 0.6);
+    --dice: 'black';
+    --dice-border: '2px solid #1e293b';
 }
 
 .card {
@@ -206,5 +210,61 @@ ul {
 
     50% {
         background-position: 100% 50%, 0% 50%;
+    }
+}
+
+@keyframes spin {
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+@keyframes progressPulse {
+
+    0%,
+    100% {
+        width: 0%;
+    }
+
+    50% {
+        width: 100%;
+    }
+}
+
+@keyframes bounce {
+
+    0%,
+    100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+@keyframes pulse {
+
+    0%,
+    100% {
+        transform: scale(1);
+        opacity: 1;
+    }
+
+    50% {
+        transform: scale(1.1);
+        opacity: 0.8;
+    }
+}
+
+@keyframes fadeInOut {
+
+    0%,
+    100% {
+        opacity: 0.6;
+    }
+
+    50% {
+        opacity: 1;
     }
 }
