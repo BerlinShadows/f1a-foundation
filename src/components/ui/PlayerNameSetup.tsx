@@ -1,4 +1,3 @@
-// app/components/ui/PlayerNameSetup.tsx
 'use client';
 
 import { useState, useEffect } from 'react';
