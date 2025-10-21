@@ -14,11 +14,12 @@ for (const file of files) {
     stringArray: true,
     stringArrayEncoding: ['base64'],
     stringArrayThreshold: 0.75,
+    identifiersPrefix: '_',
     splitStrings: true,
     splitStringsChunkLength: 4,
     reservedNames: [
       'React', 'useState', 'useEffect', 'useMemo', 'useCallback', 'useRef',
-      'useRouter', 'Component', '_jsx', '_jsxs', 'createElement', 'Fragment'
+      'useRouter', 'Component', '_jsx', '_jsxs', 'createElement', 'Fragment', 'useTheme', 'usePlayerName'
     ],
     disableConsoleOutput: true,
     selfDefending: false,
