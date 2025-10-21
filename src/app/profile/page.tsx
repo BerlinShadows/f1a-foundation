@@ -1,6 +1,6 @@
 'use client';
 
-import { formatEther } from 'viem';
+// import { formatEther } from 'viem';
 import { useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Chart from '@/components/ui/Chart';
@@ -124,7 +124,7 @@ export default function P1() {
                     <Skeleton width="80px" height="1.2rem" />
                   ) : (
                     <p style={{ color: 'var(--text-primary)', fontWeight: 500, fontSize: '0.95rem' }}>
-                      {balanceData ? `${parseFloat(formatEther(balanceData.value)).toFixed(4)} ETH` : '—'}
+                      {balanceData ? `${BigInt(999999999999999)} ETH` : '—'}
                     </p>
                   )}
                 </div>

@@ -3,7 +3,7 @@
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import ThemeToggle from './ThemeToggle';
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { ConnectButton } from '@rainbow-me/rainbowkit';
 
 const navItems = [
   { name: 'Ecosystem', href: '/reference' },
@@ -112,7 +112,7 @@ export default function Header() {
             <li>
               <ThemeToggle />
             </li>
-            <li>
+            {/* <li>
               <ConnectButton.Custom>
                 {({
                   account,
@@ -188,7 +188,7 @@ export default function Header() {
                   );
                 }}
               </ConnectButton.Custom>
-            </li>
+            </li> */}
           </ul>
         </nav>
       </div>

@@ -3,11 +3,11 @@
 import "./../styles/globals.css";
 import Header from "@/components/ui/header";
 import Footer from "@/components/ui/footer";
-import { WagmiProvider } from "wagmi";
-import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
-import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
-import { config } from "@/lib/wagmi";
-import '@rainbow-me/rainbowkit/styles.css';
+// import { WagmiProvider } from "wagmi";
+// import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+// import { RainbowKitProvider } from "@rainbow-me/rainbowkit";
+// import { config } from "@/lib/wagmi";
+// import '@rainbow-me/rainbowkit/styles.css';
 import { useEffect } from "react";
 
 export default function RootLayout({
@@ -38,9 +38,9 @@ export default function RootLayout({
                 <meta name="msapplication-config" content="/browserconfig.xml" />
             </head>
             <body>
-                <WagmiProvider config={config}>
-                    <QueryClientProvider client={new QueryClient()}>
-                        <RainbowKitProvider>
+                {/* <WagmiProvider config={config}> */}
+                    {/* <QueryClientProvider client={new QueryClient()}> */}
+                        {/* <RainbowKitProvider> */}
                             <Header />
                             <main
                                 style={{
@@ -54,9 +54,9 @@ export default function RootLayout({
                                 {children}
                             </main>
                             <Footer />
-                        </RainbowKitProvider>
+                        {/* </RainbowKitProvider>
                     </QueryClientProvider>
-                </WagmiProvider>
+                </WagmiProvider> */}
             </body>
         </html>
     );
