@@ -1,6 +1,6 @@
 'use client';
 
-import { useLoading } from '@/components/presentation/useLoading';
+// import { useLoading } from '@/components/presentation/useLoading';
 import { useRouter } from 'next/navigation';
 import { useEffect, useRef, useState } from 'react';
 
@@ -128,10 +128,10 @@ export default function GamesPage() {
     const animatedSessions = useAnimatedNumber(stats.totalSessions);
     const animatedOnline = useAnimatedNumber(stats.currentOnline);
 
-    const { show } = useLoading();
+    // const { show } = useLoading();
     const handlePlay = (href: string) => {
         setIsLoading(true);
-        show('spinner');
+        // show('spinner');
 
 
         setTimeout(() => {
