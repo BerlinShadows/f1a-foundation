@@ -1,6 +1,5 @@
 'use client';
 
-// import { formatEther } from 'viem';
 import { useEffect, useState } from 'react';
 import Card from '@/components/ui/Card';
 import Chart from '@/components/ui/Chart';
